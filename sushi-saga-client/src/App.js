@@ -16,7 +16,8 @@ constructor(){
     firstFour: [], // 1.5- this is need to be an empty array so u wont get an error
     index: 4,
     platesArr: [],
-    budget: 100
+    budget: 100,
+    message: "You have 100 dollars remaining"
   }
 }
 
@@ -35,7 +36,7 @@ componentDidMount(){ // 2- need to setState
 
 }
 
-handleClickMorebtn = (e) => {
+handleClickMorebtn = () => {
     this.setState({
           index: this.state.index + 4,
           firstFour: this.state.sushis.slice(this.state.index, this.state.index + 4)
@@ -47,11 +48,13 @@ handleClickMorebtn = (e) => {
 
 addPlate = (sushi) => {
   if(sushi.price > this.state.budget){
-    document.getElementById("ubroke").innerText ="No money left, you have " + this.state.budget + " dollars left"
+    this.setState({message: "No money left, you have " + this.state.budget + " dollars left"})
   }else{
     this.setState({
       platesArr: this.state.platesArr.concat(sushi),
-      budget: this.state.budget - sushi.price //we have to put this here cuz we wanna substract the sushi that lives here from the budget
+      budget: this.state.budget - sushi.price,
+      message: "You have " + (this.state.budget - sushi.price) + " remaining"
+      //we have to put this here cuz we wanna substract the sushi that lives here from the budget
     })
   }
   
@@ -65,8 +68,8 @@ addPlate = (sushi) => {
     
     return (
       <div className="app">
-        <SushiContainer firstFourSushi={this.state.firstFour} moreSushi={this.handleClickMorebtn} addPlate={this.addPlate}/> 
-        <Table platesArr={this.state.platesArr} budget={this.state.budget}/>
+        <SushiContainer firstFourSushi={this.state.firstFour} moreSushi={this.handleClickMorebtn} addPlate={this.addPlate} budget={this.state.budget}/> 
+        <Table platesArr={this.state.platesArr} budget={this.state.budget} message={this.state.message}/>
       </div>
     );
   }

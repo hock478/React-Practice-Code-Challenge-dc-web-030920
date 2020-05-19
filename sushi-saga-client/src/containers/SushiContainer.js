@@ -18,7 +18,7 @@ class SushiContainer extends React.Component{
         {/* if you dont have an id and u have to use the index
         {this.props.firstFourSushi.map((sushi, index) => <Sushi sushi={sushi} key={index}/>)}  */}
 
-        {this.props.firstFourSushi.map(sushi => <Sushi sushi={sushi} key={sushi.id} addPlate={this.props.addPlate}/>)}  
+        {this.props.firstFourSushi.map(sushi => <Sushi sushi={sushi} key={sushi.id} addPlate={this.props.addPlate} budget={this.props.budget}/>)}  
 
         <MoreButton moreSushi={this.props.moreSushi}/>
       </div>

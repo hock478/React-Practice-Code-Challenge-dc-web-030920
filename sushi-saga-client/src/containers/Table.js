@@ -11,7 +11,7 @@ const Table = (props) => {
   return (
     <Fragment>
       <h1 className="remaining" id="ubroke">
-        You have: $ {props.budget } remaining!
+          {props.message}
       </h1>
       <div className="table">
         <div className="stack">

@@ -11,9 +11,13 @@ class Sushi extends Component {
   handleClickOnSushi = () => {
     // console.log("I've been clicked", event.target) 
     //change the state of the beenEaten to be true, which will remove the sushi image from the DOM
-    this.setState({
-      beenEaten: true
-    })
+    if(this.props.budget >= this.props.sushi.price){
+      this.setState({
+        beenEaten: true
+  
+      })
+    }
+   
   }
   
   render(){
