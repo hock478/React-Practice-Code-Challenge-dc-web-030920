@@ -1,7 +1,10 @@
 import React from 'react'
 
 const MoreButton = (props) => {
-    return <button onClick={/* Fill me in! */ null}>
+  
+// this props.moreSushi is coming from app to sushiContainer then to here
+
+    return <button onClick={props.moreSushi}>
             More sushi!
           </button>
 }
